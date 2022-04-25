@@ -1,35 +1,42 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
-const cors = require('cors');
+const cors = require("cors");
 const port = 3000;
 
-const db = require('./queries');
+const db = require("./queries");
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
+	bodyParser.urlencoded({
+		extended: true,
+	}),
 );
 
 /**
  * Gets all info from the database - example
  */
-app.get('/', (request, response) => {
-  response.json({ info: 'Node.js, Express, and Postgres API' });
+app.get("/", (request, response) => {
+	response.json({ info: "Node.js, Express, and Postgres API" });
 });
 
-app.get('/users', db.getUsers);
-app.get('/users/:id', db.getUser);
+app.get("/users", db.getUsers);
 
-app.put('/users/:id', db.updateUser);
+app.get("/users/:id", db.getUser);
 
-app.post('/users', db.createUser);
+app.put("/users/:id", db.updateUser);
 
-app.delete('/users/:id', db.deleteUser);
+app.post("/users", db.createUser);
+
+app.delete("/users/:id", db.deleteUser);
+
+app.get("/appetizers", db.getAppetizers);
+
+app.get("/entrees", db.getEntrees);
+
+app.get("/drinks", db.getDrinks);
 
 app.listen(port, () => {
-  console.log(`App running on port ${port}.`);
+	console.log(`App running on port ${port}.`);
 });
