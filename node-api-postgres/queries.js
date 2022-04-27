@@ -3,12 +3,12 @@ const pool = new Pool({
 	user: "postgres",
 	host: "localhost",
 	database: "postgres",
-	password: "password",
+	password: "postgres",
 	port: 5432,
 });
 
 const getUsers = (request, response) => {
-	pool.query("SELECT * FROM user_info ORDER BY id ASC", (error, results) => {
+	pool.query("SELECT * FROM menu ORDER BY id ASC", (error, results) => {
 		if (error) {
 			throw error;
 		}
@@ -18,7 +18,7 @@ const getUsers = (request, response) => {
 
 const getUser = (request, response) => {
 	const id = parseInt(request.params.id);
-	pool.query("SELECT * FROM user_info WHERE id= $1 ", [id], (error, results) => {
+	pool.query("SELECT * FROM menu WHERE id= $1 ", [id], (error, results) => {
 		if (error) {
 			throw error;
 		}
@@ -27,23 +27,22 @@ const getUser = (request, response) => {
 };
 
 const createUser = (request, response) => {
-	const { id, age, name } = request.body;
-	console.log(id, age, name);
+	const { id, price, name } = request.body;
+	console.log(id, price, name);
 
-	pool.query("INSERT INTO user_info (id, age, name) VALUES ($1, $2, $3)", [id, age, name], (error, results) => {
+	pool.query("INSERT INTO menu (id, price, name) VALUES ($1, $2, $3)", [id, price, name], (error, results) => {
 		if (error) {
 			throw error;
 		}
-		response.status(201).send(`User added`);
+		response.status(201).send(`Item added`);
 	});
 };
 
 const updateUser = (request, response) => {
-	console.log("hits");
 	const id = parseInt(request.params.id);
-	const { name, age } = request.body;
+	const { name, price } = request.body;
 
-	pool.query("UPDATE user_info SET name = $1, age = $2 WHERE id = $3", [name, age, id], (error, results) => {
+	pool.query("UPDATE menu SET name = $1, price = $2 WHERE id = $3", [name, price, id], (error, results) => {
 		if (error) {
 			throw error;
 		}
@@ -55,38 +54,11 @@ const deleteUser = (request, response) => {
 	const id = parseInt(request.params.id);
 	console.log(id);
 
-	pool.query("DELETE FROM user_info WHERE id= $1", [id], (error, results) => {
+	pool.query("DELETE FROM menu WHERE id= $1", [id], (error, results) => {
 		if (error) {
 			throw error;
 		}
 		response.status(200).send(`User Deleted`);
-	});
-};
-
-const getAppetizers = (request, response) => {
-	pool.query("SELECT * FROM appetizers ORDER BY price DESC", (error, results) => {
-		if (error) {
-			throw error;
-		}
-		response.status(200).json(results.rows);
-	});
-};
-
-const getEntrees = (request, response) => {
-	pool.query("SELECT * FROM entrees ORDER BY price DESC", (error, results) => {
-		if (error) {
-			throw error;
-		}
-		response.status(200).json(results.rows);
-	});
-};
-
-const getDrinks = (request, response) => {
-	pool.query("SELECT * FROM drinks ORDER BY price DESC", (error, results) => {
-		if (error) {
-			throw error;
-		}
-		response.status(200).json(results.rows);
 	});
 };
 
@@ -96,7 +68,5 @@ module.exports = {
 	createUser,
 	updateUser,
 	deleteUser,
-	getAppetizers,
-	getEntrees,
-	getDrinks,
+
 };
