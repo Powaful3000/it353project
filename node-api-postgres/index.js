@@ -31,12 +31,6 @@ app.post("/users", db.createUser);
 
 app.delete("/users/:id", db.deleteUser);
 
-app.get("/appetizers", db.getAppetizers);
-
-app.get("/entrees", db.getEntrees);
-
-app.get("/drinks", db.getDrinks);
-
 app.listen(port, () => {
 	console.log(`App running on port ${port}.`);
 });
