@@ -1,4 +1,4 @@
-// Get Users
+// Get - shows all users in database
 const getButton = document.getElementById('get-data-button');
 getButton.addEventListener('click', () => {
   const result = fetch('http://localhost:3000/users', {
@@ -19,7 +19,7 @@ getButton.addEventListener('click', () => {
       infoUI.innerHTML = '';
       for (let i = 0; i < data.length; i++) {
         infoUI.innerHTML +=
-          'Name: ' + data[i].name + ' \tAge:' + data[i].age + '<br>';
+          'Name of the dish: ' + data[i].name + '. \t The total price is: $' + data[i].price + '<br>';
       }
     })
     .catch((error) => {
@@ -27,18 +27,20 @@ getButton.addEventListener('click', () => {
     });
 });
 
-// Post
+// Post - inputs new entries into the database
 const postButton = document.getElementById('post-button');
 
 postButton.addEventListener('click', () => {
   const postID = document.getElementById('post-id').value;
   const postName = document.getElementById('post-name').value;
-  const postAge = document.getElementById('post-age').value;
+  const postprice = document.getElementById('post-price').value;
+
+
 
   const postData = {
     id: postID,
     name: postName,
-    age: postAge,
+    price: postprice,
   };
 
   fetch('http://localhost:3000/users', {
@@ -57,18 +59,20 @@ postButton.addEventListener('click', () => {
     });
 });
 
-// PUT
+// PUT - updates the database
 const putBotton = document.getElementById('put-button');
 
 putBotton.addEventListener('click', () => {
   const putID = document.getElementById('put-id').value;
   const putName = document.getElementById('put-name').value;
-  const putAge = document.getElementById('put-age').value;
+  const putprice = document.getElementById('put-price').value;
+
+
 
   const data = {
     id: putID,
     name: putName,
-    age: putAge,
+    price: putprice,
   };
   console.log(data);
 
@@ -88,7 +92,7 @@ putBotton.addEventListener('click', () => {
     });
 });
 
-// DELETE
+// DELETE - deletes the the ID selection in database 
 const deleteButton = document.getElementById('delete-button');
 
 deleteButton.addEventListener('click', () => {
