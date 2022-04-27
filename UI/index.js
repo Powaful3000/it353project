@@ -1,4 +1,4 @@
-// Get - shows all users in database
+// Get - shows all items in database
 const getButton = document.getElementById('get-data-button');
 getButton.addEventListener('click', () => {
   const result = fetch('http://localhost:3000/users', {
