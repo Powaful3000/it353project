@@ -3,7 +3,7 @@
     background-color: #dfdfdf;
     padding: 20px 10px;
   }
-  
+
   /* Style the header links */
   .header a {
     float: left;
@@ -16,26 +16,26 @@
     border-radius: 4px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
-  
+
   /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
   .header a.logo {
     font-size: 25px;
     font-weight: bold;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
-  
+
   /* Change the background color on mouse-over */
   .header a:hover {
     background-color: rgb(165, 165, 165);
     color: black;
   }
-  
+
   /* Style the active/current link*/
   .header a.active {
     background-color: #14b68d;
     color: white;
   }
-  
+
   /* Float the link section to the right */
   .header-right {
     float: right;
@@ -44,7 +44,7 @@
 
 
 
-  
+
   /* Style the navigation menu */
 .navbar {
     width: 100%;
@@ -53,7 +53,7 @@
     overflow: auto;
     margin-bottom: 10px;
   }
-  
+
   /* Navigation links */
   .navbar a {
     float: left;
@@ -65,13 +65,13 @@
     width: 23.4%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
     text-align: center; /* If you want the text to be centered */
   }
-  
+
   /* Add a background color on mouse-over */
   .navbar a:hover {
     background-color: rgb(15, 109, 86);
   }
-  
-  
+
+
   body, html {
     height: 120%;
 }
@@ -124,17 +124,17 @@
 
 .sidepic{
   padding-top: 30px;
-  
+
 }
 
 .main{
   margin-left: 460px;
-  padding: 0px 10px;
+  padding: 0 10px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 img {
-  float: left; 
+  float: left;
   margin: 5px;
 }
 
@@ -145,9 +145,9 @@ p {
 }
 
 .main2{
-  padding: 0px 10px;
+  padding: 0 10px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  
+
 }
 
 .sidepic2{

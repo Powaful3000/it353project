@@ -1,4 +1,4 @@
-window.addEventListener("load", (event) => {
+window.addEventListener("load", () => {
 	const list = document.getElementById("menuArea");
 	const url = "http://localhost:3000/items";
 	fetch(url, {
