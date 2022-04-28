@@ -21,15 +21,15 @@ app.get("/", (request, response) => {
 	response.json({ info: "Node.js, Express, and Postgres API" });
 });
 
-app.get("/users", db.getUsers);
+app.get("/items", db.getItems);
 
-app.get("/users/:id", db.getUser);
+app.get("/items/:id", db.getItem);
 
-app.put("/users/:id", db.updateUser);
+app.put("/items/:id", db.updateItem);
 
-app.post("/users", db.createUser);
+app.post("/items", db.createItem);
 
-app.delete("/users/:id", db.deleteUser);
+app.delete("/items/:id", db.deleteItem);
 
 app.listen(port, () => {
 	console.log(`App running on port ${port}.`);

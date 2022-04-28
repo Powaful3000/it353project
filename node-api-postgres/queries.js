@@ -1,5 +1,5 @@
 const Pool = require("pg").Pool;
-const pool = new Pool({
+const db = new Pool({
 	user: "postgres",
 	host: "localhost",
 	database: "postgres",
@@ -7,8 +7,8 @@ const pool = new Pool({
 	port: 5432,
 });
 
-const getUsers = (request, response) => {
-	pool.query("SELECT * FROM menu ORDER BY id ASC", (error, results) => {
+const getItems = (request, response) => {
+	db.query("SELECT * FROM menu ORDER BY id ASC", (error, results) => {
 		if (error) {
 			throw error;
 		}
@@ -16,9 +16,9 @@ const getUsers = (request, response) => {
 	});
 };
 
-const getUser = (request, response) => {
+const getItem = (request, response) => {
 	const id = parseInt(request.params.id);
-	pool.query("SELECT * FROM menu WHERE id= $1 ", [id], (error, results) => {
+	db.query("SELECT * FROM menu WHERE id= $1", [id], (error, results) => {
 		if (error) {
 			throw error;
 		}
@@ -26,11 +26,11 @@ const getUser = (request, response) => {
 	});
 };
 
-const createUser = (request, response) => {
+const createItem = (request, response) => {
 	const { id, price, name } = request.body;
 	console.log(id, price, name);
 
-	pool.query("INSERT INTO menu (id, price, name) VALUES ($1, $2, $3)", [id, price, name], (error, results) => {
+	db.query("INSERT INTO menu (id, price, name) VALUES ($1, $2, $3)", [id, price, name], (error, results) => {
 		if (error) {
 			throw error;
 		}
@@ -38,11 +38,11 @@ const createUser = (request, response) => {
 	});
 };
 
-const updateUser = (request, response) => {
+const updateItem = (request, response) => {
 	const id = parseInt(request.params.id);
 	const { name, price } = request.body;
 
-	pool.query("UPDATE menu SET name = $1, price = $2 WHERE id = $3", [name, price, id], (error, results) => {
+	db.query("UPDATE menu SET name = $1, price = $2 WHERE id = $3", [name, price, id], (error, results) => {
 		if (error) {
 			throw error;
 		}
@@ -50,11 +50,11 @@ const updateUser = (request, response) => {
 	});
 };
 
-const deleteUser = (request, response) => {
+const deleteItem = (request, response) => {
 	const id = parseInt(request.params.id);
 	console.log(id);
 
-	pool.query("DELETE FROM menu WHERE id= $1", [id], (error, results) => {
+	db.query("DELETE FROM menu WHERE id= $1", [id], (error, results) => {
 		if (error) {
 			throw error;
 		}
@@ -63,10 +63,9 @@ const deleteUser = (request, response) => {
 };
 
 module.exports = {
-	getUsers,
-	getUser,
-	createUser,
-	updateUser,
-	deleteUser,
-
+	getItems,
+	getItem,
+	createItem,
+	updateItem,
+	deleteItem,
 };
